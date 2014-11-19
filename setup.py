@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
 author = 'Michael Maurizi'
-author_email = 'mmaurizi@azavea.com'
+author_email = 'info@azavea.com'
 
 setup(
     name='django-tinsel',
-    version='0.1',
+    version='0.1.0',
     description='A python module for decorating function-based Django views',
     long_description=open('README.rst').read(),
     author=author,
