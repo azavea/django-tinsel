@@ -3,9 +3,10 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 
+import json
 
 from django.core.serializers.json import DjangoJSONEncoder
-from django.contrib.gis.geos import Point
+from django.contrib.gis.geos import Point, GEOSGeometry
 from django.db.models.fields.files import ImageFieldFile
 from django.utils.encoding import force_text
 from django.utils.functional import Promise
@@ -49,5 +50,11 @@ class LazyEncoder(DjangoJSONEncoder):
                 return obj.url
             else:
                 return None
+        elif isinstance(obj, GEOSGeometry):
+            srid = 4326
+            return {
+                'geojson': json.loads(obj.transform(srid, clone=True).json),
+                'srid': srid
+            }
         else:
             return super(LazyEncoder, self).default(obj)
