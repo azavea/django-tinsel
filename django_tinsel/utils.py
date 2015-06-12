@@ -41,7 +41,7 @@ class LazyEncoder(DjangoJSONEncoder):
             return obj.as_dict()
         elif isinstance(obj, Point):
             srid = 4326
-            obj.transform(srid)
+            obj = obj.transform(srid, clone=True)
             return {'x': obj.x, 'y': obj.y, 'srid': srid}
         # TODO: Handle S3
         elif isinstance(obj, ImageFieldFile):
