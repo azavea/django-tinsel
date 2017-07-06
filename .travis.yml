@@ -36,5 +36,15 @@ install:
 script:
   - coverage run --source=django_tinsel test_app/manage.py test django_tinsel_tests
 
+deploy:
+  provider: pypi
+  user: azavea
+  password:
+    secure: A+EnXPAjeSIQKra9euWmfCPniF1QebTJKJKqZxbCc1u/r2PBBxCD8duWakcKCTfMy7Fdwex1Ms5lk9gGxz+C29ZWffYqAbhQGByR/dhkmIlfi7PdBrofCm5VMf53MgW+54M5zKXuEreGxfTMNQ29w2x45fwehTCiS43rA3gaf/8=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: azavea/django-tinsel
+
 after_success:
   - coveralls --verbose
