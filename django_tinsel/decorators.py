@@ -10,8 +10,7 @@ from functools import wraps
 from django.contrib.auth import get_user_model
 from django.http import (HttpResponse, HttpResponseBadRequest,
                          HttpResponseForbidden, Http404)
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404, render
 
 from django_tinsel.exceptions import HttpBadRequestException
 from django_tinsel.utils import LazyEncoder
@@ -83,8 +82,7 @@ def render_template(template):
             # If we want to return some other response type we can,
             # that simply overrides the default behavior
             if params is None or isinstance(params, dict):
-                resp = render_to_response(template, params,
-                                          RequestContext(request), **kwargs)
+                resp = render(request, template, params, **kwargs)
             else:
                 resp = params
 

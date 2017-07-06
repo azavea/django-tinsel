@@ -24,5 +24,5 @@ setup(
         "Framework :: Django",
         "License :: OSI Approved :: Apache Software License"
     ],
-    install_requires=['django>=1.5'],
+    install_requires=['django>=1.8'],
 )

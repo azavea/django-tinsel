@@ -12,4 +12,12 @@ INSTALLED_APPS = ('django.contrib.auth',
                   'django.contrib.contenttypes',
                   'django_tinsel_tests',)
 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+    },
+]
+
 DEBUG = True
