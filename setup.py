@@ -20,6 +20,9 @@ setup(
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Programming Language :: Python",
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         "Environment :: Plugins",
         "Framework :: Django",
         "License :: OSI Approved :: Apache Software License"
