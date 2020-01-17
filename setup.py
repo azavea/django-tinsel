@@ -5,7 +5,7 @@ author_email = 'info@azavea.com'
 
 setup(
     name='django-tinsel',
-    version='1.0.1',
+    version='1.0.2',
     description='A python module for decorating function-based Django views',
     long_description=open('README.rst').read(),
     author=author,
