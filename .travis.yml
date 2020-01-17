@@ -51,6 +51,7 @@ deploy:
     tags: true
     distributions: sdist bdist_wheel
     repo: azavea/django-tinsel
+    python: "3.7"
 
 after_success:
   - coveralls --verbose
