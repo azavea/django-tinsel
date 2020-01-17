@@ -15,6 +15,7 @@ from .context import django_tinsel  # NOQA
 from django_tinsel.decorators import (route, log, render_template,
                                       json_api_call, string_to_response,
                                       username_matches_request_user)
+from django_tinsel.exceptions import HttpBadRequestException
 from django_tinsel.utils import decorate
 
 
@@ -31,8 +32,8 @@ def redirect_view(request):
     return HttpResponseRedirect("http://lmgtfy.com")
 
 
-def bad_response_view(request):
-    return HttpResponseBadRequest("Goodbye World")
+def raise_bad_request_view(request):
+    raise HttpBadRequestException("raised HttpBadRequestException")
 
 
 @username_matches_request_user
@@ -150,6 +151,10 @@ class StringToResponseTests(BaseTestCase):
         self.assertEqual("text/csv", resp['Content-Type'])
         self.assertEqual('11', resp['Content-Length'])
 
+    def test_bad_request_exception(self):
+        failing_view = string_to_response("text/plain")(raise_bad_request_view)
+        resp = failing_view(self.get_req)
+        self.assertEqual(b'raised HttpBadRequestException', resp.content)
 
 class UsernameMatchesRequestUserTests(BaseTestCase):
     def setUp(self):

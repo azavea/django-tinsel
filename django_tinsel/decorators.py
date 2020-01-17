@@ -131,7 +131,7 @@ def string_to_response(content_type):
                 response['Content-Type'] = content_type
 
             except HttpBadRequestException as bad_request:
-                response = HttpResponseBadRequest(bad_request.message)
+                response = HttpResponseBadRequest(bad_request)
 
             return response
         return newreq
